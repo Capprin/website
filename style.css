@@ -1,0 +1,95 @@
+a {
+  text-decoration: none;
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  font-family: 'Crimson Text';
+}
+
+ul {
+  list-style-type: none;
+}
+
+.break-line {
+  width: 10%;
+}
+
+.content {
+  display:block;
+  max-width: 800px;
+  font-size: large;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content.centered {
+  max-width: 85%;
+  text-align: center;
+}
+
+.figure {
+  display: inline-block;
+  text-align: center;
+  font-size: small;
+}
+
+.header {
+  text-align: center;
+  overflow: hidden; /* hack-ish to contain nav bar in header */
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 10px;
+  max-width: 800px;
+}
+
+.header ul {
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+.header h1 a:hover {
+  text-decoration: none;
+}
+
+.header li {
+  display:inline;
+  font-size: large;
+}
+
+.header li a {
+  display:inline-block;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.image-row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-row .figure {
+  padding: 0px 1px 1em 1px;
+}
+
+.image-row .figure img {
+  max-height: 500px;
+  max-width:100%;
+  width: auto;
+}
+
+.inline-icon {
+  margin-left: 0.1em;
+  height: 1em;
+  width: auto;
+}
+
+.figure img {
+  max-width: 60%;
+  height: auto;
+}
