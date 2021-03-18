@@ -1,2 +1,5 @@
 images
 downloads
+journal*
+!journal.py
+*.bat
