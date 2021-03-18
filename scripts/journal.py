@@ -18,8 +18,9 @@ def interpret(source, dest, directory_file='journal.html'):
   links = []
   proj_root_abs = os.path.abspath(PROJECT_ROOT)
   template_path = os.path.join(proj_root_abs, TEMPLATE_NAME)
-  # recursively read files in source
   source_abs = os.path.abspath(source)
+  dest_abs = os.path.abspath(dest)
+  # recursively read files in source
   for root, _, files in os.walk(source_abs):
     for filename in files:
       # convert md files only
@@ -41,16 +42,23 @@ def interpret(source, dest, directory_file='journal.html'):
       # fix links
       template_soup.find_all('a', href=True, text='Journal')[0]['href'] = '../journal.html'
       template_soup.find_all('link', href='style.css')[0]['href'] = '../style.css'
-      # write html to dest
-      dest_abs = os.path.abspath(dest)
+      # don't write if exists
       dest_name = os.path.join(dest_abs, name+'.html')
+      if os.path.exists(dest_name):
+        with open(dest_name, 'r') as old:
+          old_contents = old.read()
+        if old_contents == template_soup.prettify():
+          continue
+      # write html to dest
       os.makedirs(os.path.dirname(dest_name), exist_ok=True)
       with open(dest_name, 'w', encoding="utf-8", errors="xmlcharrefreplace") as dest_html:
         dest_html.write(template_soup.prettify())
       # add relative link to "links" list
       dest_rel = os.path.relpath(dest_name, proj_root_abs)
       links.append(dest_rel)
-  # use links to write directory
+  # use links to write directory (if exist)
+  if not links:
+    return
   # start with template
   with open(template_path, 'r') as template_file:
     template_soup = BeautifulSoup(template_file.read(), 'html.parser')
