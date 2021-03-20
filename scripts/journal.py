@@ -39,7 +39,10 @@ def interpret(source, dest, directory_file='journal.html'):
         template_soup = BeautifulSoup(template_file.read(), 'html.parser')
       # add md content to template
       template_soup.find_all('div', class_='content')[0].append(md_soup)
-      # fix links
+      # fix links, badly
+      template_soup.find_all('a', href=True, text='Me')[0]['href'] = '../index.html'
+      template_soup.find_all('a', href=True, text='Work')[0]['href'] = '../work.html'
+      template_soup.find_all('a', href=True, text='Play')[0]['href'] = '../play.html'
       template_soup.find_all('a', href=True, text='Journal')[0]['href'] = '../journal.html'
       template_soup.find_all('link', href='style.css')[0]['href'] = '../style.css'
       # don't write if exists
