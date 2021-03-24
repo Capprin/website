@@ -45,8 +45,11 @@ def interpret(source, dest, directory_file='journal.html'):
       template_soup.find_all('a', href=True, text='Play')[0]['href'] = '../play.html'
       template_soup.find_all('a', href=True, text='Journal')[0]['href'] = '../journal.html'
       template_soup.find_all('link', href='style.css')[0]['href'] = '../style.css'
-      # don't write if exists
+      # add relative link to "links" list
       dest_name = os.path.join(dest_abs, name+'.html')
+      dest_rel = os.path.relpath(dest_name, proj_root_abs)
+      links.append(dest_rel)
+      # don't write if exists
       if os.path.exists(dest_name):
         with open(dest_name, 'r') as old:
           old_contents = old.read()
@@ -56,9 +59,6 @@ def interpret(source, dest, directory_file='journal.html'):
       os.makedirs(os.path.dirname(dest_name), exist_ok=True)
       with open(dest_name, 'w', encoding="utf-8", errors="xmlcharrefreplace") as dest_html:
         dest_html.write(template_soup.prettify())
-      # add relative link to "links" list
-      dest_rel = os.path.relpath(dest_name, proj_root_abs)
-      links.append(dest_rel)
   # use links to write directory (if exist)
   if not links:
     return
