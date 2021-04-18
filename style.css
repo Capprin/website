@@ -10,6 +10,8 @@ a:hover {
 
 body {
   font-family: 'Crimson Text';
+  font-size: large;
+  font-size: 1.5vh;
 }
 
 ul {
@@ -23,7 +25,6 @@ ul {
 .content {
   display:block;
   max-width: 800px;
-  font-size: large;
   margin-left: auto;
   margin-right: auto;
 }
@@ -60,7 +61,6 @@ ul {
 
 .header li {
   display:inline;
-  font-size: large;
 }
 
 .header li a {
