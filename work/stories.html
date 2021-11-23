@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capprin Bass</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><a href="../index.html">Capprin Bass</a></h1>
+      <hr>
+      <ul>
+        <li><a href="../index.html">Me</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../play.html">Play</a></li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+      <h3>Procedural Generation of Stories</h3>
+      <b>Background</b>
+      <p>
+        Procedural generation is both a buzzword and a sin in videogames.
+        Small studios can leverage procedural content to create massive worlds;
+        however, these environments often feel empty compared to human-generated
+        levels. The narrative (or lack thereof) is partly to blame. A human-made
+        game like Skyrim has much more engaging questlines than a game like No
+        Man's Sky, with procedural objectives.
+      </p>
+      <p>
+        My goal with this project was to programmatically generate engaging
+        storylines. While the intended purpose was for videogames, the stories
+        had to reasonably stand on their own. As such, this project was
+        motivated by reasonable stories, while allowing integration into a
+        game engine.
+      </p>
+
+      <b>The Project</b>
+      <p>
+        In this project, stories are defined as a collection of vignettes. A
+        single vignette describes an event or progression of the story. This can
+        be as simple as the collection of a key item, or more sentimental, like
+        the betrayal of a close friend. The task is to organize a set of
+        vignettes into a reasonable story.
+      </p>
+      <p>
+        The key innovation of this project is in representing the story as a
+        graph. This lets the program (in particular, the <i>author</i>) query
+        whether a particular vignette "fits" in the story. For example, the
+        following (program-generated) graph contains the Protagonist's
+        relationhips at some point in the story.
+        <div class = "figure">
+          <img src = "../images/graph_example.JPG" alt="Graph Example"><br>
+          Story association graph.
+        </div>
+      </p>
+      <p>
+        Because vignettes are effectively queries or insertions on the graph,
+        we can design arbitrarily intricate vignettes, or completely distinct
+        kinds of stories without changing code. The choice of vignette/story
+        architecture is decoupled from the program, which is essential if others
+        are to use this approach.
+      </p>
+
+      <b>Current Status and Future Work</b>
+      <p>
+        This project successfully generates stories from the supplied vignettes;
+        however, random selection of "fitting" vignettes is insufficient to
+        create a sensible story. The stories (as they currently stand) fail to
+        capture a reasonable story arc; to do so, more imposing constraints on
+        the number and type of vignettes must be implemented. These would likely
+        follow established literary standards for narrative.
+      </p>
+      <p>
+        The existing project code is available on my
+        <a href="https://github.com/Capprin/stories">github</a>.
+      </p>
+    </div>
+  </body>
+</html>

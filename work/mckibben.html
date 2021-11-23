@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capprin Bass</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><a href="../index.html">Capprin Bass</a></h1>
+      <hr>
+      <ul>
+        <li><a href="../index.html">Me</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../play.html">Play</a></li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+      <h3>Dynamic Modeling and Control of McKibben Actuators</h3>
+      <b>Background</b>
+      <p>
+        McKibben actuators are pneumatic actuators that contract when
+        pressurized. They were originally designed to be used as "air muscles,"
+        and indeed have some similarities with muscular tissue. Their
+        contraction is highly nonlinear, as contraction rate decreases with
+        absolute pressure. The elastic effects of the actuator introduce
+        additional nonlinearities.
+      </p>
+
+      <b>The Project</b>
+      <p>
+        This project involved the modeling of McKibben actuators, with the
+        purpose of attempting and evaluating control methods. Based on prior
+        work and data, I modeled the behavior of McKibben actuators; here, we
+        can see the effect of pressurization and depressurization.
+        <div class="figure span">
+          <iframe src="https://www.youtube.com/embed/1FlrRMkWzPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br>McKibben actuator open loop behavior. Pressurization demonstrates
+          nonlinearities in contraction, and depressurization demonstrates
+          anisotropy.
+        </div>
+      </p>
+      <p>
+        In addition, I worked with other students to implement and evaluate
+        control methods. For example, here we attempt position control on a
+        periodic (sinusoid) target:
+        <div class="figure span">
+          <iframe src="https://www.youtube.com/embed/Z8qSyOnO9ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br>McKibben actuator position control with a periodic target. The
+          PD controller both leads and lags the target (depending on phase),
+          and actuator limits prevent perfect results.
+        </div>
+      </p>
+
+      <b>Current Status and Future Work</b>
+      <p>
+        The goal of this project was to demonstrate the limits of McKibben
+        actuators. In general, other actuators (motors, in particular) perform
+        better in robotics tasks, with fewer control challenges. For specific
+        applications, McKibbens can still be the correct choice, as done in
+        certain manipulation domains, or for robots designed for deployment in
+        radioactive environments.
+      </p>
+    </div>
+  </body>
+</html>

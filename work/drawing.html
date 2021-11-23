@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capprin Bass</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><a href="../index.html">Capprin Bass</a></h1>
+      <hr>
+      <ul>
+        <li><a href="../index.html">Me</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../play.html">Play</a></li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+      <h3>Drawn Game Levels using Image Segmentation</h3>
+      <b>Background</b>
+      <p>
+        Most game engines compose levels out of a number of different assets.
+        For 2D games, assets are usually images and code, but can also be
+        engine-specific constructions like animations or collision boxes.
+        Usually, game developers create these assets one at a time, and then
+        construct complete levels by combining separate assets in the engine.
+      </p>
+      <p>
+        I felt that the existing workflow for creating game levels separated the
+        creative process (in content creation) from game design. Instead, I wanted
+        to be able to draw complete levels, and load them easily into the engine.
+        This way, entire areas could be prototyped quickly, and tested immediately.
+        Tweaks can easily be done in-engine, and finished products extend naturally
+        from the prototype.
+      </p>
+
+      <b>The Project</b>
+      <p>
+        To acheive drawn game levels, I wrote a set of scripts that segment
+        an input drawing into its constituent assets. The major dependency was
+        <a href="https://opencv.org/"><u>OpenCV</u></a>, and tasks included:
+        <ul>
+          <li>Finding contours,</li>
+          <li>Computation of minimum bounding boxes,</li>
+          <li>Image transformation and saving,</li>
+          <li>Construction of engine-compliant level files, and</li>
+          <li>Design of complete assets, including colliders.</li>
+        </ul>
+      </p>
+      <p>
+        As an example, below is a test-case image; this version is a flattened
+        JPG, but the use of layering allowed artists to specify item types as
+        they were creating the level.
+        <div class="figure span">
+          <img src="../images/drawn_level.jpg" alt="Drawn game level"><br>
+          Test environment with multiple asset types
+        </div>
+      </p>
+      <p>
+        In a single pass, the above image was converted into a game level,
+        with constituent assets (images and colliders).
+        <div class="figure span">
+          <img src="../images/drawn_level.gif" alt="Complete game level"><br>
+          In-engine game level (Enable GIF's in your browser)
+        </div>
+      </p>
+
+      <b>Current Status and Future Work</b>
+      <p>
+        This project is available on my <a href="https://github.com/Capprin/drawing-games">github</a>.
+        Although the underlying process is sound, this method requires that
+        asset types are predefined, so the program can adquately translate
+        images into complete levels. In addition, much of the code can be
+        optimized to take advantage of Godot's <i>scene</i> files, rather than
+        constructing assets entirely in-code. I've tabled this project for now,
+        but the basic scripts should work in a variety of cases.
+      </p>
+    </div>
+  </body>
+</html>

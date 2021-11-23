@@ -40,6 +40,13 @@ ul {
   font-size: small;
 }
 
+.figure.span {
+  display: inline-block;
+  text-align: center;
+  font-size: small;
+  width: 100%;
+}
+
 .header {
   text-align: center;
   overflow: hidden; /* hack-ish to contain nav bar in header */
@@ -91,5 +98,15 @@ ul {
 
 .figure img {
   max-width: 60%;
+  height: auto;
+}
+
+.figure iframe {
+  width: 560px;
+  height: 315px;
+}
+
+.figure.span img {
+  max-width: 100%;
   height: auto;
 }

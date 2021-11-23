@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capprin Bass</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><a href="../index.html">Capprin Bass</a></h1>
+      <hr>
+      <ul>
+        <li><a href="../index.html">Me</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../play.html">Play</a></li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+      <h3>3D Rotational Coordinate Optimization on SO(3)</h3>
+      <b>Background</b>
+      <p>
+        My Masters advisor, <a href="http://rosslhatton.com/index.html">Prof. Ross L. Hatton</a>,
+        found that choice of body coordinates impacts system stability, from a
+        mathematical point of view. The optimal choice of coordinates, termed
+        <a href="https://ieeexplore.ieee.org/document/5509876"><u>Minimum Perturbation Coordinates</u></a>,
+        is a particularly stable coordinate choice for robot systems.
+      </p>
+      <p>
+        In collaboration with several other OSU robotics students, I'm working
+        on a project to execute dynamic gaits (running, jumping) on Agility
+        Robotics' <a href="https://www.agilityrobotics.com/robots#cassie">Cassie</a>.
+        Optimization of the robot's rotational coordinates is necessary to
+        effectively reconcile differences in the optimal robot trajectory and
+        the learned motor commands.
+      </p>
+
+      <b>The Project</b>
+      <p>
+        Based on methods (and verified against) a
+        <a href="https://ieeexplore.ieee.org/document/6580130">previous conference paper</a>,
+        I implemented a coordinate optimizer for the 3D rotation group, SO(3).
+        In essence, it chooses body coordinates (with respect to configuration)
+        such that moving the robot's actuators minimally rotates the body of the
+        robot.
+      </p>
+      <p>
+        The SO(3) coordinate optimizer is highly general-purpose; it can support
+        (in theory) robot systems with an arbitrary number of actuators, in any
+        configuration. The objective function is defined over an N-dimensional
+        hypercube mesh, and integrated with quadrature integration. The optimal
+        transform is found as a set of weights on piecewise-linear basis
+        functions, defined over the mesh.
+      </p>
+
+      <b>Current Status and Future Work</b>
+      <p>
+        The optimizer is complete, and produces minimum-perturbation coordinates
+        for supplied systems. As an example, note the change in displacement for
+        a test gait on a reaction-wheel satellite, in minimum perturbation
+        coordinates:
+
+        <div class="figure span">
+          <img src="../images/optimization.jpg" alt="Optimization Results"><br>
+          Resultant displacement, in original and optimal coordinates.
+        </div>
+      </p>
+
+      <p>
+        At time of writing, I'm integrating the SO(3) coordinate optimizer into
+        <a href="https://github.com/OSU-LRAM/GeometricSystemPlotter"><u>sysplotter</u></a>,
+        the lab application for geometric-mechanical tools. This will allow for
+        the study of complex systems on SO(3), with the addition of preexisting
+        computation and visualization tools. In the upcoming months, results
+        ought to be published in an journal article, extending the conference
+        paper.
+      </p>
+    </div>
+  </body>
+</html>
