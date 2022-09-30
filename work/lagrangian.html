@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capprin Bass</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><a href="../index.html">Capprin Bass</a></h1>
+      <hr>
+      <ul>
+        <li><a href="../index.html">Me</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../play.html">Play</a></li>
+      </ul>
+      <hr>
+    </div>
+    <div class="content">
+      <h3>Lagrangian Dynamics of a Series Elastic Manipulator</h3>
+      <b>Background</b>
+      <p>
+        When I started this project, I was interested in the Lagrangian
+        dynamics underlying much of my 
+        <a href="https://arxiv.org/abs/2202.10575">own research</a>, as well as
+        the idea of manipulators with series elastic actuators. Compliance in
+        the system could make people safer around these robots, and stiffness
+        could be "brought back" using PD control.
+      </p>
+
+      <b>The Project</b>
+      <p>
+        The bulk of this project involved implementing the dynamics of this
+        specific robot arm in MATLAB, using the available integrators to
+        simulate the equation(s) of motion over time. The trickiest component
+        was modeling the springs in series with the motors; I accomplished this
+        by including spring displacement as its own part of the robot state
+        space. When all dynamics are accounted for, the arm behaves as one would
+        expect with no control strategy.
+        <div class="figure span">
+          <img src="../images/springy_arm.gif" alt="Series elastic robot arm animation"><br>
+          Series elastic robot arm with feedforward control (Enable GIF's in your browser)
+        </div>
+      </p>
+
+      <p>
+        In this instance, control is as simple as using a PD controller to track
+        the position setpoint over time. This controller is intimately related
+        to the series elastic actuators powering the manipulator; the
+        proportional gain adjusts the spring constant, and the derivative gain
+        adds damping to the system. With a little bit of damping added, the
+        system behaves much less erratically.
+        <div class="figure span">
+            <img src="../images/damped_arm.gif" alt="Series elastic robot arm animation"><br>
+            Series elastic robot arm with underdamped feedback control (Enable GIF's in your browser)
+          </div>
+      </p>
+
+      <b>Current Status and Future Work</b>
+      <p>
+        The source for this project is available on my 
+        <a href="https://github.com/Capprin/soft-arm-sim">github</a>. This was
+        effectively an exercise in implementation of Lagrangian dynamics for a
+        real system; the approach ought to scale well for any sort of
+        manipulator, due to its group-aware construction. However, this sort of
+        code <i>ought</i> to be available in any good dynamics library, or
+        provided when a manipulator is purchased.
+      </p>
+    </div>
+  </body>
+</html>
